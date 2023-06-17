@@ -23,13 +23,24 @@ function Noticia() {
   }, [third]);
 
   return (
-    //         incrusto js abieron y cerrando llaves -> me importa las constantes arriba automáticamente
-    //         en lugar de usar un string, utilizo variables que vienen importadas desde afuera // utilizo (en image.constants.jsx) un objeto que me devuelve un string y utilizo acá la variable para la url
-    <figure>
-      <img src={CONSTANTS.NOTICIA_PIKACHU} />
-      <figcaption>Pikachu</figcaption>
-      <p>Noticias sobre el final de Pokemón</p>
-    </figure>
+    // estas etiquetas "<> </>" se llaman fragment
+    <>
+      {
+        //results es un array []
+        //       ? = operador de condición
+        characters?.map(character, (index) => {
+          return (
+            <div key={index}>
+              <figure>
+                <img src={character.image} />
+                <figcaption>{character.name}</figcaption>
+              </figure>
+              <p>Noticia sobre el final de Pokemón</p>
+            </div>
+          );
+        })
+      }
+    </>
   );
 }
 
