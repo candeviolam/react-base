@@ -21,7 +21,7 @@ function Noticia() {
     estilos.backgroundColor = "green";
   }
 
-//retornar html con componentes por dentro, anidar esos componentes
+//retornar html con componentes por dentro, anidar esos componentes (en App.jsx lo de Noticia Navbar Publicidad, etc)
   return (
     // estas etiquetas "<> </>" se llaman fragment
     //    el div recibe adentro style y style recibe adentro un objeto con backg... hecho ya variable, pero podría copiar todo el objeto adentro de style{} en lugar de hacer la variable
