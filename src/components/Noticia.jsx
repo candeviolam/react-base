@@ -11,25 +11,20 @@ const Parrafo = () => {
 //Functional Component
 //puede ser una func tradicional o una flecha
 //       mi func se tiene que llamar igual que el nombre del componente
-function Noticia() {
-  const estado = false;
-  const estilos = { backgroundColor: "red", display: "flex" };
+function Noticia(props) {
 
-  if (estado) {
-    estilos.backgroundColor = "blue";
-  } else {
-    estilos.backgroundColor = "green";
-  }
+  // const {imagen} = props; -> destructuring si quisiera evitarme el props. de abajo en el return
+  // forma más limpia todavía es hacer el destructuring dentro de la func Noticia -> ej hecho abajo
 
-//retornar html con componentes por dentro, anidar esos componentes (en App.jsx lo de Noticia Navbar Publicidad, etc)
+  //retornar html con componentes por dentro, anidar esos componentes (en App.jsx lo de Noticia Navbar Publicidad, etc)
   return (
     // estas etiquetas "<> </>" se llaman fragment
-    //    el div recibe adentro style y style recibe adentro un objeto con backg... hecho ya variable, pero podría copiar todo el objeto adentro de style{} en lugar de hacer la variable
-    // Parrafo fue previamente declarado afuera arriba
+    //             recibo las constantes por props arriba como parametro de Noticia -> me voy al compon padre dsp (App) para enviarle a la función las propiedas que necesitamos (porque props es un objeto con una propiedad que se llama .imagen que va a recibir la url)
+    //              paso por props desde el padre hacia el hijo la imagen de Pikachu (la llamamos desde el padre a través del mismo nombre, por ej "imagen")
     <>
-      <div style={estilos}>
+      <div>
         <figure>
-          <img src={CONSTANTS.NOTICIA_PIKACHU} />
+          <img src={props.imagen} />
           <figcaption>Pikachu</figcaption>
         </figure>
         <Parrafo />
@@ -39,3 +34,7 @@ function Noticia() {
 }
 
 export default Noticia;
+
+// sin el const {imagen} ni el props. dentro del componente
+//                   acá estoy destructurando la imagen del objeto props, ahí ya no necesito hacer ningun paso extra
+// function Noticia({imagen})
