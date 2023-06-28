@@ -12,7 +12,7 @@ function App() {
     <div>
       <NavbarBoots />
       <Noticia />
-    </div>                                                                                              
+    </div>
   );
 }
 
