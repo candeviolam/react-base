@@ -8,6 +8,7 @@ const Parrafo = () => {
   return <p>Noticia sobre el final de Pokemón</p>;
 };
 
+//Functional Component
 //puede ser una func tradicional o una flecha
 //       mi func se tiene que llamar igual que el nombre del componente
 function Noticia() {
@@ -20,6 +21,7 @@ function Noticia() {
     estilos.backgroundColor = "green";
   }
 
+//retornar html con componentes por dentro, anidar esos componentes
   return (
     // estas etiquetas "<> </>" se llaman fragment
     //    el div recibe adentro style y style recibe adentro un objeto con backg... hecho ya variable, pero podría copiar todo el objeto adentro de style{} en lugar de hacer la variable
