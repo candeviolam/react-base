@@ -3,19 +3,16 @@ import React from "react";
 //       me importa las constantes automáticamente cuando la incrusté en la img del return
 import { CONSTANTS } from "../constants/image.constants";
 
-//como va a ser una función de flecha, se trata como variable, entonces para poder usarla la tengo que declarar antes afuera de Noticia
-const Parrafo = () => {
-  return <p>Noticia sobre el final de Pokemón</p>;
+//               el párrafo va a recibir por props el texto y se lo envío abajo al Parrafo para que lo pueda renderizar
+const Parrafo = ({ texto }) => {
+  return <p>{texto}</p>;
 };
 
 //Functional Component
 //puede ser una func tradicional o una flecha
 //       mi func se tiene que llamar igual que el nombre del componente
-function Noticia(props) {
-
-  // const {imagen} = props; -> destructuring si quisiera evitarme el props. de abajo en el return
-  // forma más limpia todavía es hacer el destructuring dentro de la func Noticia -> ej hecho abajo
-
+//                        me voy a App para mandarles las props (la info)
+function Noticia({ imagen, nombre, texto }) {
   //retornar html con componentes por dentro, anidar esos componentes (en App.jsx lo de Noticia Navbar Publicidad, etc)
   return (
     // estas etiquetas "<> </>" se llaman fragment
@@ -24,17 +21,14 @@ function Noticia(props) {
     <>
       <div>
         <figure>
-          <img src={props.imagen} />
-          <figcaption>Pikachu</figcaption>
+          <img src={imagen} />
+          <figcaption>{nombre}</figcaption>
         </figure>
-        <Parrafo />
+        <Parrafo texto={texto} />
       </div>
     </>
+    //           le envío a Parrafo el texto para que lo pueda renderizar
   );
 }
 
 export default Noticia;
-
-// sin el const {imagen} ni el props. dentro del componente
-//                   acá estoy destructurando la imagen del objeto props, ahí ya no necesito hacer ningun paso extra
-// function Noticia({imagen})

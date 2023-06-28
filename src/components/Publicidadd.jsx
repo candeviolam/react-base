@@ -20,7 +20,7 @@
 import React from "react";
 import { CONSTANTS } from "../constants/image.constants";
 
-function Publicidad() {
+function Publicidadd() {
   const titulo = "Compra en Vite Store";
   return (
     <div>
@@ -32,4 +32,4 @@ function Publicidad() {
   );
 }
 
-export default Publicidad;
+export default Publicidadd;
