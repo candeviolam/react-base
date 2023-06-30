@@ -6,6 +6,11 @@ import "./App.css";
 import { CONSTANTS } from "./constants/image.constants";
 import Publicidadd from "./components/Publicidadd";
 
+//                                                        recibir además en el pokemon bg (se lo agrego tmb abajo en el map)
+const MappedNews = ({ pokemon: { imagen, nombre, texto }, bg }) => (
+  <Noticia imagen={imagen} nombre={nombre} texto={texto} bg={bg}/>
+);
+
 //Componente que exporto e importo en el archivo main
 //          los parámetros que recibimos a través de los componentes -> PROPS (les podemos poner el nombre que queramos)
 //            recibir en App un array , recibir {pokemones} y abajo un array de pokemon y utilizar ese array para recorrerlo con map noticia por ej (me voy a main.jsx y creo un objeto)
@@ -35,12 +40,10 @@ function App({ pokemones }) {
           //       c/u de los hijos de una lista tiene que tener una unique "key" de tipo prop -> crear a c/u de los elems un key (abajo en el "section")
           //       como todos los elems son hnos (los distintos componentes Noticia p/c pokemón, que recibe props) nos los puedo distinguir, por eso les agrego una key única
           //       cualq nombre en la key(?
+          //                                  bg va a ser algo, vamos hasta el main.jsx y le agregamos una propiedad que se llame bg al obj del array de pokemons
+          //                                    dsp se lo paso a la const de MappedNews tmb (bg={bg}), y tmb eN Noticia.jsx agregárselo a Noticia
           <section key={index}>
-            <Noticia
-              imagen={pokemon.imagen}
-              nombre={pokemon.nombre}
-              texto={pokemon.texto}
-            />
+            <MappedNews pokemon={pokemon} bg={pokemon.bg} />
             <hr />
           </section>
         );
@@ -51,7 +54,15 @@ function App({ pokemones }) {
   );
 }
 
-/* para hacerlo más limpio todavía (const arriba del map (por fuera) abajo de los import para el código )
+/* 
+
+<Noticia
+  imagen={pokemon.imagen}
+  nombre={pokemon.nombre}
+  texto={pokemon.texto}
+/>
+
+para hacerlo más limpio todavía (const arriba del map (por fuera) abajo de los import para el código )
 
 un componente que se va a encargar de devolverme la Noticia que a su vez sólo recibe el pokemon
 

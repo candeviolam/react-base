@@ -13,16 +13,19 @@ const pokemons = [
     nombre: "Pikachu",
     imagen: CONSTANTS.NOTICIA_PIKACHU,
     texto: "Pikachu es un pokemón de tipo eléctrico",
+    bg: "yellow",
   },
   {
     nombre: "Squirtle",
     imagen: CONSTANTS.IMAGEN_SQUIRTLE,
     texto: "Squirtle es un pokemón de tipo agua",
+    bg: "lightblue",
   },
   {
     nombre: "Charmander",
     imagen: CONSTANTS.IMAGEN_CHARMANDER,
     texto: "Charmander es un pokemón de tipo fuego",
+    bg: "orange",
   },
 ];
 

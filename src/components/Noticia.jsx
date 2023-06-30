@@ -12,14 +12,15 @@ const Parrafo = ({ texto }) => {
 //puede ser una func tradicional o una flecha
 //       mi func se tiene que llamar igual que el nombre del componente
 //                        me voy a App para mandarles las props (la info)
-function Noticia({ imagen, nombre, texto }) {
+//                                        agrego acá el bg y le pongo "style" al div del return
+function Noticia({ imagen, nombre, texto, bg }) {
   //retornar html con componentes por dentro, anidar esos componentes (en App.jsx lo de Noticia Navbar Publicidad, etc)
   return (
     // estas etiquetas "<> </>" se llaman fragment
     //             recibo las constantes por props arriba como parametro de Noticia -> me voy al compon padre dsp (App) para enviarle a la función las propiedas que necesitamos (porque props es un objeto con una propiedad que se llama .imagen que va a recibir la url)
     //              paso por props desde el padre hacia el hijo la imagen de Pikachu (la llamamos desde el padre a través del mismo nombre, por ej "imagen")
     <>
-      <div>
+      <div style={{ backgroundColor: bg }}>
         <figure>
           <img src={imagen} />
           <figcaption>{nombre}</figcaption>
