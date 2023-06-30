@@ -19,8 +19,9 @@ function Noticia({ imagen, nombre, texto, bg }) {
     // estas etiquetas "<> </>" se llaman fragment
     //             recibo las constantes por props arriba como parametro de Noticia -> me voy al compon padre dsp (App) para enviarle a la función las propiedas que necesitamos (porque props es un objeto con una propiedad que se llama .imagen que va a recibir la url)
     //              paso por props desde el padre hacia el hijo la imagen de Pikachu (la llamamos desde el padre a través del mismo nombre, por ej "imagen")
+    //    borré el style={{ backgroundColor: bg }} solo acá, para que se dejen de pintar los fondos
     <>
-      <div style={{ backgroundColor: bg }}>
+      <div>
         <figure>
           <img src={imagen} />
           <figcaption>{nombre}</figcaption>

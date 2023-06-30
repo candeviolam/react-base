@@ -37,7 +37,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   // éstas etiquetas (React.Strict..) ponen ciertas reglas p/q trabajemos con react y nos marque ciertos errores
   //   adentro llamamos al componente (App) como si fuera un etiqueta html con el tag de apertura y cierre combinado
   //       le paso esto al App para que me los renderice (?
+  //     borré pokemones={pokemons} de <App />
   <React.StrictMode>
-    <App pokemones={pokemons} />
+    <App />
   </React.StrictMode>
 );
