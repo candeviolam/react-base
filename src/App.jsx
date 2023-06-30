@@ -23,18 +23,26 @@ function App({ pokemones }) {
     //               map recibe una func por paráms que me va a devovler un pokemon y el index (que es el índice del pokemon)
     //  map utiliza el return (en éste caso vamos a retornar el componente Noticia)
     //    envuelvo Noticia y el hr en un fragment (podría ser un section por ej, pero para no utilizar nuevamente un div), porque el return no puede devolver dos elems padres separados, solo uno, entonces unifico
+    //          .map para recorrer el array, que nos devuelva los elems y los dibuje. en react usar el .map casi siempre (en casos puntuales el for o forEach)
+    //              el map recibe una func, y esa func recibe como paráms 1ero el elem que se encuentra en el array (pokemon) y 2do el índice
+    //                la func map me devuelve un pokemón y un índice
+    //                pokemon e index (segundo elem que recibo como parámetro) dentro de la func que voy a realizar dentro del map
+    //    como los fragment no reciben llaves (key={}), lo envuelvo/convierto en un section o un div y le agrego las llaves
     <div>
       <NavbarBoots />
       {pokemones.map((pokemon, index) => {
         return (
-          <>
+          //       c/u de los hijos de una lista tiene que tener una unique "key" de tipo prop -> crear a c/u de los elems un key (abajo en el "section")
+          //       como todos los elems son hnos (los distintos componentes Noticia p/c pokemón, que recibe props) nos los puedo distinguir, por eso les agrego una key única
+          //       cualq nombre en la key(?
+          <section key={index}>
             <Noticia
               imagen={pokemon.imagen}
               nombre={pokemon.nombre}
               texto={pokemon.texto}
             />
             <hr />
-          </>
+          </section>
         );
       })}
       <Publicidadd />
@@ -42,5 +50,35 @@ function App({ pokemones }) {
     //  duplicar el código de Noticia pero pasándole las props necesarias, de esta forma yo puedo reutilizar mi componente n veces
   );
 }
+
+/* para hacerlo más limpio todavía (const arriba del map (por fuera) abajo de los import para el código )
+
+un componente que se va a encargar de devolverme la Noticia que a su vez sólo recibe el pokemon
+
+.                   va a recibir pokemon por destructuring
+1_ const MappedNews = ({pokemon}) => {
+.        hacemos destructuring acá (imagen, nombre y texto de pokemon) y sacamos el pokemon. abajo 
+    const { imagen, nombre, texto } = pokemon;
+    return (
+      <Noticia
+        imagen={imagen}
+        nombre={nombre}
+        texto={texto}
+      />
+    )
+}
+
+.                           una función de flecha para más limpio todavía (? (ya sin return tmp)
+.                         destructuring del objeto pokemon -> recibiendo imagen, nomb y texto del obj pokemon, y a su vez le estoy pasando esos valores a la Noticia
+2_ const MappedNews = ({pokemon: { imagen, nombre, texto } }) => (
+      <Noticia imagen={imagen} nombre={nombre} texto={texto} />
+);
+
+en lugar de Noticia en el map de arriba, le pasaría antes del <hr />:
+.           le pasamos el pokemon que recibimos en la constante por destructuring
+.                    y el pokemon que le vamos a pasar es el que estamos recibiendo arriba (en el map)
+<MappedNews pokemon={pokemon} />
+
+*/
 
 export default App;
