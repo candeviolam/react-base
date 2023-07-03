@@ -1,4 +1,5 @@
 import React from "react";
+import { MappedNews } from "../mapped-news/MappedNews";
 
 export const Pokemons = ({ pokemones }) => {
   return (
