@@ -40,7 +40,7 @@ function NavbarBoots(prop) {
       </Navbar>
       <div>{children}</div>
     </div>
-    //     a éste nuevo elem lo vamos a recibir por prop
+    //     le paso children, a éste nuevo elem lo vamos a recibir por prop
   );
 }
 

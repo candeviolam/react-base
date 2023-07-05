@@ -13,9 +13,10 @@ function App({ pokemons }) {
   //                                 valor en falso por defecto
   const [state, setState] = useState(false);
   return (
+    // pasar componentes por props (lo que está adentro de <NavbarBoots>..</>) (un componente es html, así que acá podría recibir cualq cosa (por ej un div, etc))
     //si state es true, vamos a pasar CounterApp
-    //                        si state no es true, vamos a pasar Pokemons
-    //                                    en main.jsx lo agrego a <App />
+    //                        si state no es true, vamos a pasar Pokemons (que lo vamos a recibir arriba en App())
+    //                                    en main.jsx lo agrego a <App /> -> la prop que me faltaba del main en App
     <NavbarBoots>
       {state ? <CounterApp /> : <Pokemons pokemones={pokemons} />}
     </NavbarBoots>
