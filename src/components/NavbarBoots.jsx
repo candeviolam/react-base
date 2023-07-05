@@ -40,6 +40,7 @@ function NavbarBoots(prop) {
       </Navbar>
       <div>{children}</div>
     </div>
+    //     acá está renedirzando el children que se le pasó en App.jsx
     //     le paso children, a éste nuevo elem lo vamos a recibir por prop
   );
 }

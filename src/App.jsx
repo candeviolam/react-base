@@ -13,14 +13,21 @@ function App({ pokemons }) {
   //                                 valor en falso por defecto
   const [state, setState] = useState(false);
   return (
+    //Higher Order Component -> un componente (hijo) dentro de otro componente, puedo pasarle varios hijos, y c/u de éstos hijos tiene su estado personal (CouterApp tiene su propio estado que es el del useState, y Pokemons tiene su propio estado que es el de los pokemons)
+    //NavbarBoots está renderizando su children en NavbarBoots.jsx (-> lo que sea que le pase acá adentro va a renderizar)
     // pasar componentes por props (lo que está adentro de <NavbarBoots>..</>) (un componente es html, así que acá podría recibir cualq cosa (por ej un div, etc))
     //si state es true, vamos a pasar CounterApp
     //                        si state no es true, vamos a pasar Pokemons (que lo vamos a recibir arriba en App())
     //                                    en main.jsx lo agrego a <App /> -> la prop que me faltaba del main en App
+    //envolvemos todo en un div, porque abajo a éste div vamos a ponerle un botón que diga "cambiar vista"
+    //                      al botón vamos a pasarle que "state" (el est.) va a ser diferente (!) a "state"
+    //                                si el state es false, al negarlo va a ser true y viceversa (siempre voy a estar invirtiendo el est. de ésta app. a través de ese botón)
     <NavbarBoots>
-      {state ? <CounterApp /> : <Pokemons pokemones={pokemons} />}
+      <div>{state ? <CounterApp /> : <Pokemons pokemones={pokemons} />}
+      <button onClick={() => setState(!state)}>Cambiar Vista</button></div>
     </NavbarBoots>
   );
+  //          estamos renderizando condicionalmente (estamos dibujando dependiendo de una variable -> state) un componente u otro dentro de la barra de navegación
 }
 
 // function App() {
