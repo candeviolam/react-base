@@ -1,13 +1,31 @@
 //escribir "rafc" para que me cree el componente solo
 import React, { useState } from "react";
 
-export const CounterApp = () => {
+//                          traídos desde afuera (App.jsx)
+export const CounterApp = ({ con, setCon }) => {
   const [counter, setCounter] = useState(0);
   return (
+    //    vamos a usar la función setCon además de la de setCounter
+    //                 le pasamos una función que haga las dos cosas (setCounter y setCon)
     <div>
-      <label>{counter}</label>
-      <button onClick={() => setCounter(counter + 1)}>+</button>
-      <button onClick={() => setCounter(counter - 1)}>-</button>
+      <label>Counter: {counter}</label>
+      <label>Counter App: {con}</label>
+      <button
+        onClick={() => {
+          setCounter(counter + 1);
+          setCon(con + 1);
+        }}
+      >
+        +
+      </button>
+      <button
+        onClick={() => {
+          setCounter(counter - 1);
+          setCon(con - 1);
+        }}
+      >
+        -
+      </button>
     </div>
   );
 };
