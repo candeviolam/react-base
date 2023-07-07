@@ -1,0 +1,19 @@
+.counter {
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  border-radius: 10px;
+  font-weight: 300;
+  color: black;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.frow {
+  justify-content: center;
+  flex-direction: row;
+}

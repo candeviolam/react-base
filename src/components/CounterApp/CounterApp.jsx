@@ -1,31 +1,43 @@
 //escribir "rafc" para que me cree el componente solo
 import React, { useState } from "react";
 
+import "./CounterApp.css";
+
 //                          traídos desde afuera (App.jsx)
+//                           el est con ya pertenece al App -> el est de mi comp padre llega a mi hijo a través de las props (?
 export const CounterApp = ({ con, setCon }) => {
+  //el est counter es el estado interno de mi componente (el que se reinicia a 0 si refresco la pág) -> (corresponde a todo el estado de la constante de abajo(? )
+  //éste est propio es del componente CounterApp
   const [counter, setCounter] = useState(0);
   return (
     //    vamos a usar la función setCon además de la de setCounter
     //                 le pasamos una función que haga las dos cosas (setCounter y setCon)
-    <div>
-      <label>Counter: {counter}</label>
-      <label>Counter App: {con}</label>
-      <button
-        onClick={() => {
-          setCounter(counter + 1);
-          setCon(con + 1);
-        }}
-      >
-        +
-      </button>
-      <button
-        onClick={() => {
-          setCounter(counter - 1);
-          setCon(con - 1);
-        }}
-      >
-        -
-      </button>
+    <div className="counter">
+      <div className="flex">
+        <label>Counter: {counter}</label>
+        <label>Counter App: {con}</label>
+      </div>
+      <hr />
+      <div className="flex frow">
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            setCounter(counter + 1);
+            setCon(con + 1);
+          }}
+        >
+          +
+        </button>
+        <button
+          className="btn btn-danger"
+          onClick={() => {
+            setCounter(counter - 1);
+            setCon(con - 1);
+          }}
+        >
+          -
+        </button>
+      </div>
     </div>
   );
 };

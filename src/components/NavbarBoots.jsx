@@ -1,7 +1,6 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 
 //       JSX.Element = Componente => Objeto de Programación (es un clase (?)
 //función + objeto
@@ -14,8 +13,10 @@ function NavbarBoots(prop) {
   //                además del children vamos a recibir el setVista que nos va a permitir cambiar la vista (tengo que pasar setVista por App.jsx tmb)
   //                NavbarB recibe la func setVista, que la estamos desestructurando desde props, y por dentro estamos yendo hasta un navlink (por ej el de home), y cuando le hacemos click primero estamos evitando que se comporte como un navlink(es decir, que intente navegar hacia otro sitio web) y tmb estamos cambiando el setVista a true
   //             el preventDelfault es porque como es un navlink, no queremos que se ejecute la navegación
+  //      para poder usar el componente SIEMPRE voy a recibir el componente hijo como "children" (el nombre que voy a recibir)
   const { children, setVista } = prop;
   return (
+    //                   recibir "e" siempre en la función cuando hago un click
     <div>
       <Navbar bg="light" expand="lg">
         <Container>
@@ -47,8 +48,9 @@ function NavbarBoots(prop) {
       </Navbar>
       <div>{children}</div>
     </div>
-    //     acá está renedirzando el children que se le pasó en App.jsx
+    //     acá está renedirzando el children que se le pasó en App.jsx (podría sacarle el div si quisiera, porque ya tengo un div del otro lado, en el App.jsx dónde lo estoy creando)
     //     le paso children, a éste nuevo elem lo vamos a recibir por prop
+    //     los componentes hijos que pase como si fueran un componente interno se van a llamar siempre children
   );
 }
 

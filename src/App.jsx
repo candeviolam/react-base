@@ -3,29 +3,30 @@ import { useState } from "react";
 import "./App.css";
 
 import NavbarBoots from "./components/NavbarBoots";
-import CounterApp from "./pages/CounterApp";
+import CounterApp from "./components/CounterApp";
 import { Pokemons } from "./components/pokemons/Pokemons";
 
+//(con lo que estamos trabajando desde ésta aplicación)
+//Higher Order Component
+//pasar componente por props
+//estamos enviando funciones por props tmb
+//estamos asignando css a un comp hijo desde el padre (estoy agregando el css acá en el div con el className, pero desde App) -> no importa desde donde asigne el css, siempre va a estar con ese estilo (?
+//estamos usando Rnederizado Condicional -> mi aplic se va a renderizar en base al estado que le estoy enviando y así nos aseguramos de manejar el flujo de nstra aplic a través de un est, usando un est
+
 //Componente que exporto e importo en el archivo main
-//acá dibujo toda mi aplicación, pero la puedo dividir y compartimentar en componentes
-//             pokemons lo vamos a recibir desde acá
 function App({ pokemons }) {
-  //     state es la variable que verifica cuál es que comp que se tiene que dibujar (!state abajo)
-  //            ésta func se encarga de modificar la variable que verifica el renderizado de la vista
-  const [state, setVista] = useState(true); // le pongo true para que me dibuje primero los pokemons (?
+  const [state, setVista] = useState(true);
   const [counter, setCounter] = useState(0);
+
   return (
-    //Higher Order Component -> un componente (hijo) dentro de otro componente, puedo pasarle varios hijos, y c/u de éstos hijos tiene su estado personal (CouterApp tiene su propio estado que es el del useState, y Pokemons tiene su propio estado que es el de los pokemons)
-    //NavbarBoots está renderizando su children en NavbarBoots.jsx (-> lo que sea que le pase acá adentro va a renderizar)
-    // pasar componentes por props (lo que está adentro de <NavbarBoots>..</>) (un componente es html, así que acá podría recibir cualq cosa (por ej un div, etc))
-    //                le paso tanto con como setCon -> tengo que ponerlos en CounterApp.jsx como props --> ésto es para que cuando yo haga el "Cambio Vista" con el botón, el estado de mi contador debería permanecer donde lo haya dejado -> ahora al estado no estoy manejándolo desde CounterApp(.jsx) que se refresca, sino que lo estoy manejando desde App
-    //                                     setCounter es la función como prop (?
-    //           a NavbarB le vamos a pasar setVista (la entre {} puede tener otro nombre, pero tiene que ser el mismo que está en la constante de arriba)
-    //                     es la función que nos va a permitir modificar el estado
-    //  negando el state (!) porque tenía cruzados los botones en el navbar del navegador
-    //le estoy pasando como parám al Navbar la función setVista -> que la recibe en NavbarBoots.jsx desestructurando desde props
-    <NavbarBoots setVista={setVista}> 
-      <div>
+    //     al div donde estoy renderizando mis aplicaciones, le agrego un className (que lo traigo desde Bootstrap) y un class que se va a llamar "box"(lo traigo desde el App.css)
+    //  componente condicional, en base a una condición, voy a mandar un componente u otro
+    //el children que le estoy pasando (todo el div dentro de <NavbarBoots></Navb.>) como si fuera un hijito desde html, lo renderizo desde NavbarBoots.jsx -> <div>{children}</div>
+    //    state es un booleano (true/false)
+    //                el est con ya pertenece al App -> est de mi componente hijo (?
+
+    <NavbarBoots setVista={setVista}>
+      <div className="container-fluid box">
         {!state ? (
           <CounterApp con={counter} setCon={setCounter} />
         ) : (

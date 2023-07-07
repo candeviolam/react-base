@@ -1,29 +1,6 @@
-.counter-app {
-  text-align: center;
-  background-color: white;
-  color: black;
-  padding: 1rem;
-  box-sizing: border-box;
-  border-radius: 10px;
-  width: 250px;
-}
-
-.counter-app div {
-  margin-top: 1rem;
-}
-
-.counter-app div button:first-child {
-  margin-right: 5px;
-}
-
-label {
-  font-size: 1.5rem;
-}
-
-.red {
-  color: red;
-}
-
-.blue {
-  color: blue;
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
 }
