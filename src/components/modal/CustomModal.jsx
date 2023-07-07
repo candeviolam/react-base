@@ -20,6 +20,11 @@ function CustomModal({ children, show, setShow, handleSave }) {
 
   //                             como no tengo las constantes de arriba, donde decía handleClose pongo directm su func y etc, así en todos lados y todos los archivos(?
   return (
+
+    //       show es una propiedad que tiene el modal, que se encarga de mostrar el modal si la propiedad es verdadera, y si la propiedad es falsa de cerrar el modal 
+    //                   tenemos tmb un método que se llama onHide, que es un evento, que indica que cuando el modal se esconda tiene que poner setShow en false (es decir, le cambia el estado a show)
+    //                                              cuando hago click en el botón "close" hace lo mismo que onHide, cambia show a false
+    //                                     handleSave es la func que se va a encargar de guardar el formulario una vez que el usuario haya llenado los datos p/crear un pokemón
     <>
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>

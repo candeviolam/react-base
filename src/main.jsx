@@ -16,8 +16,9 @@ let pokemonsArray = [];
 
 // si localS existe.. seteamos el pokemonsArray
 if (localS) {
+  //si existe una lista de pokemons en el localStorage, se la asignamos a pokemonsArray
   pokemonsArray = JSON.parse(localS);
-} else {
+} else { // y sino lo que hacemos es crear el array en el inicio con los pokemones que elegimos y hacemos el setItem donde almacenamos los pokemons y el array
   pokemonsArray = [
     {
       nombre: "Pikachu",
@@ -54,7 +55,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   //       la prop que tengo que pasarle
 
   //               acá cambiamos el pokemons que estábamos pasándole por pokemonsArray
+  //     (lo que agregamos en setItem) es lo que le pasamos como parám a App -> los pokemones y el array
   <React.StrictMode>
     <App pokemons={pokemonsArray} />
   </React.StrictMode>
 );
+
+//App.jsx App es el componente que recibe los pokemons y los usa cuando va a renderizar Pokemons

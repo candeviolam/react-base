@@ -7,6 +7,10 @@ import Navbar from "react-bootstrap/Navbar";
 //                   puedo pasar como props, como paráms de una func, otro componente más pequeño
 //                   vamos a recibir por prop el nuevo elemento (el div abajo del navbar) -> vamos a renderizar lo que me pase por prop
 //"children" (comps. dentro de otro comp.) -> nomenclatura que se utiliza p/enviar un prop
+
+// las PROPS son un obj que cuando le pase un comp hijo al comp padre, va a recibir el nombre de children automáticamente
+//                   recibe un tipo de prop que se llama children (que está abajo en la const)
+//                   ésta prop se va a almacenar como children y yo la puedo desestructurar como hice abajo
 function NavbarBoots(prop) {
   //                a la func setVista la recibo como prop y la estoy enviando desde App.jsx
   //1ero desestructuro children de prop, y acto seguido lo renderizo abajo (en el div abajo de navbar)

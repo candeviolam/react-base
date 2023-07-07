@@ -17,6 +17,8 @@ import Form from "react-bootstrap/Form";
 //estamos usando Rnederizado Condicional -> mi aplic se va a renderizar en base al estado que le estoy enviando y así nos aseguramos de manejar el flujo de nstra aplic a través de un est, usando un est
 
 //Componente que exporto e importo en el archivo main
+
+//       App es el componente que recibe los pokemons y los usa cuando va a renderizar Pokemons en el return
 function App({ pokemons }) {
   const [state, setVista] = useState("contador");
   const [counter, setCounter] = useState(0);
@@ -57,8 +59,9 @@ function App({ pokemons }) {
     //                                     por ésta func hemos dejado de depender unicamente de true o false (?, creamos una nueva func que me va a permitir renderizar un componente u otro dependiendo del valor que pasamos por el link (con el switch)
 
     // abajo de NavbarBoots vamos a poner CustomModal
+
+    //             forma de pasar props que no sean tipo componente, ej: CustomModal " show={show} "
     <NavbarBoots setVista={setVista}>
-      {" "}
       <div className="container-fluid box">{ComponentRendered()}</div>
       <CustomModal show={show} setShow={setShow}>
         <Form>
