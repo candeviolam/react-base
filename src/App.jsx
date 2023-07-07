@@ -5,6 +5,7 @@ import "./App.css";
 import NavbarBoots from "./components/NavbarBoots";
 import CounterApp from "./components/CounterApp";
 import { Pokemons } from "./components/pokemons/Pokemons";
+import Calculadora from "./components/calculadora";
 
 //(con lo que estamos trabajando desde ésta aplicación)
 //Higher Order Component
@@ -15,24 +16,38 @@ import { Pokemons } from "./components/pokemons/Pokemons";
 
 //Componente que exporto e importo en el archivo main
 function App({ pokemons }) {
-  const [state, setVista] = useState(true);
+  const [state, setVista] = useState("contador");
   const [counter, setCounter] = useState(0);
 
-  return (
-    //     al div donde estoy renderizando mis aplicaciones, le agrego un className (que lo traigo desde Bootstrap) y un class que se va a llamar "box"(lo traigo desde el App.css)
-    //  componente condicional, en base a una condición, voy a mandar un componente u otro
-    //el children que le estoy pasando (todo el div dentro de <NavbarBoots></Navb.>) como si fuera un hijito desde html, lo renderizo desde NavbarBoots.jsx -> <div>{children}</div>
-    //    state es un booleano (true/false)
-    //                el est con ya pertenece al App -> est de mi componente hijo (?
+  //       voy a llamar esta func dentro de <NavbarBoots></NavbarBoots>
+  //ésta func me retorna un componente
+  function ComponentRendered() {
+    //      acá va a evaluar nstro state
+    switch (state) {
+      case "pokemon":
+        return <Pokemons pokemones={pokemons} />;
 
+      case "contador":
+        return <CounterApp con={counter} setCon={setCounter} />;
+
+      //nuevo componente
+      case "calculadora":
+        return <Calculadora />;
+
+      default:
+        return <h1>Error en la ubicación</h1>;
+        break;
+    }
+  }
+
+  return (
+    // voy a envolver la func del componente
+    //                                     cuando llame ésta func acá adentro, se va a renderizar el comp indistíntamente del click que esté haciendo en mi aplic (Pokemon o Contador), se va a renderizar el comp que le estoy pasando
+    //cambio en NavbarBoots.jsx los valores de setVista p/q aparezcan los pokemones y el contador
+    //                                     por ésta func hemos dejado de depender unicamente de true o false (?, creamos una nueva func que me va a permitir renderizar un componente u otro dependiendo del valor que pasamos por el link (con el switch)
     <NavbarBoots setVista={setVista}>
-      <div className="container-fluid box">
-        {!state ? (
-          <CounterApp con={counter} setCon={setCounter} />
-        ) : (
-          <Pokemons pokemones={pokemons} />
-        )}
-      </div>
+      {" "}
+      <div className="container-fluid box">{ComponentRendered()}</div>
     </NavbarBoots>
   );
 }

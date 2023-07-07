@@ -17,6 +17,8 @@ function NavbarBoots(prop) {
   const { children, setVista } = prop;
   return (
     //                   recibir "e" siempre en la función cuando hago un click
+    //                     cambiamos los valores del setVista según el switch en la func en App.jsx (ComponentRendered())
+    //        nuevo Nav.Link -> Calculadora
     <div>
       <Navbar bg="light" expand="lg">
         <Container>
@@ -28,7 +30,7 @@ function NavbarBoots(prop) {
                 href="#home"
                 onClick={(e) => {
                   e.preventDefault();
-                  setVista(true);
+                  setVista("pokemon");
                 }}
               >
                 Pokemon
@@ -37,10 +39,19 @@ function NavbarBoots(prop) {
                 href="#link"
                 onClick={(e) => {
                   e.preventDefault();
-                  setVista(false);
+                  setVista("contador");
                 }}
               >
                 Contador
+              </Nav.Link>
+              <Nav.Link
+                href="#link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setVista("calculadora");
+                }}
+              >
+                Calculadora
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
