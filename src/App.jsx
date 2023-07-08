@@ -1,13 +1,15 @@
 import { useState } from "react";
 
-import "./App.css";
-
-import NavbarBoots from "./components/NavbarBoots";
-import CounterApp from "./components/CounterApp";
-import { Pokemons } from "./components/pokemons/Pokemons";
 import Calculadora from "./components/calculadora";
+import CounterApp from "./components/CounterApp";
 import CustomModal from "./components/modal/CustomModal";
 import Form from "react-bootstrap/Form";
+import NavbarBoots from "./components/NavbarBoots";
+import { Pokemons } from "./components/pokemons/Pokemons"; //-> como Pokemons no tiene index, navego hasta la carpeta y el archivo para importarlos
+import Reloj from "./components/reloj";
+import RickAndMortyApp from "./components/rick-and-morty"; //-> como estoy apuntando a la carpeta (sin más navegación hasta un arch puntual), el archivo index se va a encargar de devolverme el componente
+
+import "./App.css";
 
 //(con lo que estamos trabajando desde ésta aplicación)
 //Higher Order Component
@@ -19,8 +21,12 @@ import Form from "react-bootstrap/Form";
 //Componente que exporto e importo en el archivo main
 
 //       App es el componente que recibe los pokemons y los usa cuando va a renderizar Pokemons en el return
+//App.jsx se encarga de manejar el estado de vista, counter y show. El est interno de App.jsx se inicializa con "contador", 0 y false -> estos ests se van modificando a medida que el usuario utiliza la aplic
 function App({ pokemons }) {
-  const [state, setVista] = useState("contador");
+  //                                  si yo acá cambio mi est por pokemon o calculadora por ej, siempre me va a aparecer primero el que haya puesto en éste estado cuando refresque mi sitio
+  //                                  asignándole a la variable "vista" su estado inicial
+  //            setVista -> la func que se encarga de modificar la "vista"
+  const [vista, setVista] = useState("contador");
   const [counter, setCounter] = useState(0);
 
   //vamos a crear una variable que se llame swow y setShow -> las que extrajimos de afuera (CustomModal.jsx) .. p/q cuando haga click muestre el modal(?
@@ -30,11 +36,13 @@ function App({ pokemons }) {
   //       voy a llamar esta func dentro de <NavbarBoots></NavbarBoots>
   //ésta func me retorna un componente
   function ComponentRendered() {
-    //      acá va a evaluar nstro state
+    // -> esta func está siendo ejecutada abajo en NavbarBoots
+    //      acá va a evaluar nstra "vista"
 
     //(cuando ya está hecho lo de abajo,) para modificar el estado del modal vamos a crear dentro de lo que es Pokemons..
     //              a Pokemons tmb le vamos a pasar setShow (los tengo que recibir todavía del otro lado, en Pokemons.jsx(?)
-    switch (state) {
+    //      cuando el valor de la vista sea "pokemon"/"calculadora"/"contador"/"rickandmorty"..
+    switch (vista) {
       case "pokemon":
         return <Pokemons pokemones={pokemons} setShow={setShow} />;
 
@@ -45,6 +53,13 @@ function App({ pokemons }) {
       case "calculadora":
         return <Calculadora />;
 
+      case "rickandmorty":
+        return <RickAndMortyApp />;
+
+      case "reloj":
+        return <Reloj />;
+
+      //el caso por default se ejecuta si por ej en el useState tengo como estado inicial "otrocaso" o cualquier cosa que no sea alguno de los casos de arriba (pokemon, calculadora, contador)
       default:
         return <h1>Error en la ubicación</h1>;
         break;
@@ -61,6 +76,9 @@ function App({ pokemons }) {
     // abajo de NavbarBoots vamos a poner CustomModal
 
     //             forma de pasar props que no sean tipo componente, ej: CustomModal " show={show} "
+    //                                      acá se ejecuta la func (lo sé porque tiene (), si no le colo los parént, la func no se ejecuta)
+    //                                        una vez que se ejecuta esta func, evalúa el estado de vista (arriba en la otra función, en el switch, si vista es contador, pokemon, calculadora, etc)
+    //              le paso setVista al Navbar, y setVista va a modificar el valor que tengo arriba en useState (ej en éste caso: useState("contador")) -> ir a NavbarBoots.jsx
     <NavbarBoots setVista={setVista}>
       <div className="container-fluid box">{ComponentRendered()}</div>
       <CustomModal show={show} setShow={setShow}>

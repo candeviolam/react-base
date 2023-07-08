@@ -7,6 +7,9 @@ import Modal from "react-bootstrap/Modal";
 //                  voy a hacer la destructuración del modal directam en el parám y no convirtiéndolo en una variable
 //                    usar éste modal como si fuera un Higher Order Component
 //                     le voy a pasar children y los voy a renderizar
+//                     p/hacer un HoC -> pedir los children a través de props -> en éste caso estoy haciendo el destructuring acá, pero podría sino hacer:
+/*function CustomModal(props){
+  const { children, show, setShow, handleSave } = props; ---> si quisiera hacer el destructuring en una const fuera de las props*/
 function CustomModal({ children, show, setShow, handleSave }) {
   /* voy a extraer éste fragmento de código.. p/directam modificar el setShow(?
 

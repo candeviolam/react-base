@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import { CONSTANTS } from "./constants/image.constants.jsx";
 
+
 //localSotrage que resuelve los pokemons
 
 //hacer que los pokemones sean almacenados en el localstorage y leerlos desde el localstorage
@@ -13,6 +14,7 @@ import { CONSTANTS } from "./constants/image.constants.jsx";
 const localS = localStorage.getItem("pokemons");
 //let pokemonsArray = JSON.parse(localS); // -> lo convertimos en un obj de js --> preguntamos ahora en el if, así que edito ésta variable
 let pokemonsArray = [];
+
 
 // si localS existe.. seteamos el pokemonsArray
 if (localS) {
@@ -44,6 +46,9 @@ if (localS) {
   localStorage.setItem("pokemons", JSON.stringify(pokemonsArray)); //-> localStorage no recibe JSON, por eso pasado a string
 }
 
+
+
+//       func createRoot() -> la que se encarga de renderizar nstra aplic, de ahi nstra aplic renderiza App.jsx, dsp dentro de App.jsx la func ComponentRendered() se encarga de renderizar el cuerpo, etc..
 //       utiliza un método que se llama createRoot
 //                                          obtiene un elem que se llama "root" que está en el index.html (todo mi proyecto se va a renderizar adentro de ese div de html)
 //                                                   el método "render" que dibuja nstra aplicación

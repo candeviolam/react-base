@@ -23,6 +23,8 @@ function NavbarBoots(prop) {
     //                   recibir "e" siempre en la función cuando hago un click
     //                     cambiamos los valores del setVista según el switch en la func en App.jsx (ComponentRendered())
     //        nuevo Nav.Link -> Calculadora
+    //          la func onClick -> cambiar la "vista" (setVista) a "pokemon" por ej, cuando el título es Pokemon --> simulando una navegación
+    //            asignamos el setVista desde la barra de navegación
     <div>
       <Navbar bg="light" expand="lg">
         <Container>
@@ -57,6 +59,24 @@ function NavbarBoots(prop) {
               >
                 Calculadora
               </Nav.Link>
+              <Nav.Link
+                href="#link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setVista("rickandmorty");
+                }}
+              >
+                Rick&Morty
+              </Nav.Link>
+              <Nav.Link
+                href="#link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setVista("reloj");
+                }}
+              >
+                Reloj
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -66,6 +86,8 @@ function NavbarBoots(prop) {
     //     acá está renedirzando el children que se le pasó en App.jsx (podría sacarle el div si quisiera, porque ya tengo un div del otro lado, en el App.jsx dónde lo estoy creando)
     //     le paso children, a éste nuevo elem lo vamos a recibir por prop
     //     los componentes hijos que pase como si fueran un componente interno se van a llamar siempre children
+
+    //     le pongo children pq yo puedo pasarle al componente a través de props cualquier comp hijo
   );
 }
 
